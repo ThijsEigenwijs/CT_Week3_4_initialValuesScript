@@ -1,5 +1,9 @@
-H = tf([5],[1 2 8])
+syms s;
 
+% Fill in twice!
+
+F = (10)/((s+2)*(s+11))
+H = tf([10],[1 13 22])
 h = zpk(H)
 % Print the zeros, or say there are none
 if isempty(h.z{:})
@@ -22,3 +26,7 @@ fprintf(str)
 pzplot(H);
 impulseplot(H);
 stepplot(H);
+
+ilaplace(F)
+Y = F * 1/s;
+ilaplace(Y)
