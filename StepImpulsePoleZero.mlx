@@ -1,10 +1,12 @@
 syms s;
-
 % Fill in twice!
 
 F = (10)/((s+2)*(s+11))
 H = tf([10],[1 13 22])
+
+%Watch some magic happen!
 h = zpk(H)
+
 % Print the zeros, or say there are none
 if isempty(h.z{:})
     disp("No zero's")    
@@ -23,10 +25,17 @@ end
 printStuff = 'DC gain: %d\n';
 str = sprintf(printStuff,h.k);
 fprintf(str)
+
+%plot the poles and zeros
 pzplot(H);
+%Plot the impulse response
 impulseplot(H);
+%Plot the step response
 stepplot(H);
 
+%Calculate the Impulse and Step response
+disp("Impulse") 
 ilaplace(F)
 Y = F * 1/s;
+disp("Step") 
 ilaplace(Y)
