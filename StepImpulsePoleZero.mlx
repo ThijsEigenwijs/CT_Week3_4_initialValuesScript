@@ -1,3 +1,5 @@
+H = tf([5],[1 2 8])
+
 h = zpk(H)
 % Print the zeros, or say there are none
 if isempty(h.z{:})
