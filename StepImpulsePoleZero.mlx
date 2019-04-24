@@ -1,0 +1,22 @@
+h = zpk(H)
+% Print the zeros, or say there are none
+if isempty(h.z{:})
+    disp("No zero's")    
+else
+    disp("Zero's") 
+    h.z{:}
+end
+% Print the poles, or say there are none
+if isempty(h.p{:}) 
+    disp("No poles") 
+else
+    disp("Poles") 
+    h.p{:}
+end
+% Print the DC gain!
+printStuff = 'DC gain: %d\n';
+str = sprintf(printStuff,h.k);
+fprintf(str)
+pzplot(H);
+impulseplot(H);
+stepplot(H);
