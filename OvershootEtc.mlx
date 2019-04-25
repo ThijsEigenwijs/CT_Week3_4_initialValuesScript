@@ -1,0 +1,28 @@
+function dr = dampingRatio(x)
+%This function calculates the damping ratio from the overshoot
+teller = -log(x/100);
+noemer = sqrt(pi()^2+log(x/100)^2);
+dr = teller/noemer;
+end
+
+
+function os = overshoot(x)
+%This function calucalates the overshoot from the damping ratio
+os = exp(-(x*pi())/sqrt(1-x^2))*100
+end
+
+function dr = settlingTimeWn(t,wn)
+ dr = (4)/(t*wn)
+end
+
+function wn = settlingTimeDr(t,dr)
+wn = (4)/(t*dr)
+end
+
+function tp = peaktime(wn,dr)
+tp = (pi())/(wn*sqrt(1-dr^2))
+end
+
+function ts = settlingtime(wn, dr)
+ts = (4)/(wn*dr);
+end
